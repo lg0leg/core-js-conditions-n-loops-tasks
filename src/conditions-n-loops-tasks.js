@@ -94,8 +94,10 @@ function canQueenCaptureKing(queen, king) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  const f = a + b > c && a + c > b && b + c > a;
+  const s = a === b || b === c || a === c;
+  return f && s;
 }
 
 /**
@@ -112,8 +114,14 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const rn = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+  if (num < 10) {
+    return rn[num - 1];
+  }
+  const dec = ['X', 'XX', 'XXX'];
+  const ones = rn[(num % 10) - 1] || '';
+  return dec[Math.floor(num / 10) - 1] + ones;
 }
 
 /**
